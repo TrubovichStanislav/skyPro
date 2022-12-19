@@ -5,7 +5,8 @@ public class Book {
     private Author author;
     private int yearOfPublication;
 
-    private static int bookCounter =0;
+    private static int bookCounter = 0;
+
     public Book(String name, Author author, int yearOfPublication) {
         this.name = name;
         this.author = author;
