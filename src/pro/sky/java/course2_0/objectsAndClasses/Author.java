@@ -30,6 +30,7 @@ public class Author {
 
     @Override
     // Автор один и тот же только если совпадает и имя и фамилия
+    // хотя конструктор не должен дать сделать двух одинаковых авторов
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
