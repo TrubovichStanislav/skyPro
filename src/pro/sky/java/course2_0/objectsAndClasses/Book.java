@@ -1,5 +1,7 @@
 package pro.sky.java.course2_0.objectsAndClasses;
 
+import java.util.Objects;
+
 public class Book {
     private String name;
     private Author author;
@@ -24,6 +26,28 @@ public class Book {
 
     public Author getAuthor() {
         return author;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "Название книги - " + name +
+                        ", автор " + author +
+                        ", год публикации " + yearOfPublication;
+    }
+
+    @Override
+    // Книга одна и таже если совподает автор и название, год публикации нам не важен
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return name.equals(book.name) && author.equals(book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, author);
     }
 
     public int getYearOfPublication() {
