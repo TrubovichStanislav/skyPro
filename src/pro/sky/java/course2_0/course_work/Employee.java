@@ -1,5 +1,7 @@
 package pro.sky.java.course2_0.course_work;
 
+import java.util.Objects;
+
 public class Employee {
 
     private String name;
@@ -15,6 +17,7 @@ public class Employee {
         this.department = department;
         this.idEmployee = id;
         id++;
+        System.out.println( "Добавлен новый соотрудник " + this.toString());
     }
 
     public String getName() {
@@ -59,6 +62,8 @@ public class Employee {
                 ", ИД=" + idEmployee +
                 '}';
     }
+
+
 }
 
 
