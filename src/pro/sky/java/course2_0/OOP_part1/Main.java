@@ -1,29 +1,49 @@
 package pro.sky.java.course2_0.OOP_part1;
 
-import pro.sky.java.course2_0.OOP_part1.transport.Bus;
-import pro.sky.java.course2_0.OOP_part1.transport.Car;
-import pro.sky.java.course2_0.OOP_part1.transport.Car.Key;
+
+import pro.sky.java.course2_0.OOP_part1.Driver.DriverB;
+import pro.sky.java.course2_0.OOP_part1.Driver.DriverC;
+import pro.sky.java.course2_0.OOP_part1.Driver.DriverD;
+import pro.sky.java.course2_0.OOP_part1.transport.*;
+
+import java.util.HashSet;
+
 
 public class Main {
     public static void main(String[] args) {
-       Car granta = new Car("Lada", "Granta", 2.5, "желтый", 2015, "Россия","механика","седан","111",5,false,new Key(false,false),150);
 
-        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 3.0, "черный", 2020, "Германия","автомат","седан","222",5,false,new Key(false,false),150);
-        Car z8 = new Car("BMW" ,"Z8",3.0, "черный", 2021, "Германия","автомат","родстер" , "333", 2,false,new Key(false,false),200);
-        Car avante = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея","механика", "седан","444",5,false,new Key(false,false),200);
-        Car sportage = new Car("Kia", "Sportage 4", 2.4, "красный", 2018, "Южная Корея","автомат","кросовер","555",5,false,new Key(false,false),180);
-        System.out.println(granta.changeTiresSeasonal());
-        System.out.println(granta);
-        System.out.println(a8);
-        System.out.println(z8);
-        System.out.println(avante);
-        System.out.println(sportage);
-        Bus liaz = new Bus("Лиаз","a1",2015,"Росиия","Белый",120);
-        Bus paz = new Bus("ПАЗ","Пазик",2020,"Росиия","Серый",110);
-        Bus isuzu = new Bus("ISIZU","c3",2020,"Япония","Красный",150);
-        System.out.println(liaz);
-        System.out.println(paz);
-        System.out.println(isuzu);
+        Car granta = new Car("Lada", "Granta", 2.5, new DriverB("Иван Иванов", true, 5));
+        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 3.0, new DriverB("Петр Петров", true, 4));
+        Car z8 = new Car("BMW", "Z8", 3.0, new DriverB("Сергей Сергеев", true, 3));
+        Car avante = new Car("Hyundai", "Avante", 1.6, new DriverB("Сидр Сидоров", true, 6));
+        Bus a1 = new Bus("Лиаз", "a1", 5.0, new DriverD("Сергей Соловьев", true, 3));
+        Bus pazik = new Bus("ПАЗ", "Пазик", 5.5, new DriverD("Виктор Коржаков", true, 7));
+        Bus c3 = new Bus("ISIZU", "c3", 7.0, new DriverD("Илья Борисюк", true, 4));
+        Bus sprinter = new Bus("Mercedes", "Sprinter", 7.0, new DriverD("Семен Семенов", true, 5));
+        Track kamazPlas = new Track("Камаз", "Камаз+", 9.0, new DriverC("Трубович Станислав", true, 9));
+        Track s140 = new Track("Volvo", "s140", 12.0, new DriverC("Максим Струценко", true, 10));
+        Track valday = new Track("Газель", "Валдай", 5.0, new DriverC("Артем Боровских", true, 12));
+        Track j6 = new Track("Faw", "j6", 10.0, new DriverC("Дмитрий Епанчинцев", true, 7));
+        HashSet<Transport> transports = new HashSet<>();
+        transports.add(granta);
+        transports.add(a8);
+        transports.add(z8);
+        transports.add(avante);
+        transports.add(a1);
+        transports.add(pazik);
+        transports.add(c3);
+        transports.add(sprinter);
+        transports.add(kamazPlas);
+        transports.add(s140);
+        transports.add(valday);
+        transports.add(j6);
+        for (Transport transport : transports
+        ) {
+            printInfo(transport);
+        }
+    }
 
+    private static void printInfo(Transport transport) {
+        System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и будет участвовать в заезде");
     }
 }
