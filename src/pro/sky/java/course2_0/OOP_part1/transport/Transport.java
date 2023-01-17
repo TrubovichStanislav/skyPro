@@ -13,9 +13,6 @@ public abstract class Transport<T extends Driver> implements Competing {
     private final T driver;
 
 
-
-
-
     public Transport(String brand, String model, double engineVolume, T driver) {
         if (brand != null && !brand.isEmpty() && !brand.isBlank()) {
             this.brand = brand;
@@ -62,6 +59,9 @@ public abstract class Transport<T extends Driver> implements Competing {
     public T getDriver() {
         return driver;
     }
+
+    public abstract void printType();
+
     @Override
     public String toString() {
         return "Transport{" +

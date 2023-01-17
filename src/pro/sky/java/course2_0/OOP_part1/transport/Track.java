@@ -3,6 +3,7 @@ package pro.sky.java.course2_0.OOP_part1.transport;
 import pro.sky.java.course2_0.OOP_part1.Driver.DriverC;
 
 public class Track extends Transport<DriverC> {
+    private TrackLoadCapacity type;
     public Track(String brand, String model, double engineVolume, DriverC driver) {
         super(brand, model, engineVolume, driver);
     }
@@ -36,5 +37,21 @@ public class Track extends Transport<DriverC> {
         int maxBound = 180;
         int bestLapTime = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Грузовик " + this.getModel() + " показал максимальную скорость " + bestLapTime + " км/ч");
+    }
+
+    public TrackLoadCapacity getType() {
+        return type;
+    }
+
+    public void setType(TrackLoadCapacity type) {
+        this.type = type;
+    }
+    @Override
+    public void printType() {
+        if (this.getType() != null) {
+            System.out.println(this.getType().toString());
+        }else{
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
     }
 }

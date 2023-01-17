@@ -37,13 +37,19 @@ public class Main {
         transports.add(s140);
         transports.add(valday);
         transports.add(j6);
+        j6.setType(TrackLoadCapacity.N1);
+        pazik.setType(BusNumberSeats.EXTRA_LARGE);
+        a8.setType(CarBodyType.COUPE);
         for (Transport transport : transports
         ) {
             printInfo(transport);
+            transport.printType();
         }
+
     }
 
     private static void printInfo(Transport transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и будет участвовать в заезде");
     }
+
 }
