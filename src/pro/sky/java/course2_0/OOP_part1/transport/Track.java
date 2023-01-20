@@ -14,6 +14,10 @@ public class Track extends Transport<DriverC> {
     }
 
     @Override
+    public void diagnostics() {
+        System.out.println("Грузовик " + this.getModel() + " прошел диагностику");
+    }
+    @Override
     public void stopMoving() {
         System.out.println("Грузовик " + this.getModel() + " закончил движение");
     }

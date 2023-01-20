@@ -4,6 +4,7 @@ package pro.sky.java.course2_0.OOP_part1;
 import pro.sky.java.course2_0.OOP_part1.Driver.DriverB;
 import pro.sky.java.course2_0.OOP_part1.Driver.DriverC;
 import pro.sky.java.course2_0.OOP_part1.Driver.DriverD;
+import pro.sky.java.course2_0.OOP_part1.exception.DrivingLicenseException;
 import pro.sky.java.course2_0.OOP_part1.transport.*;
 
 import java.util.HashSet;
@@ -23,7 +24,7 @@ public class Main {
         Track kamazPlas = new Track("Камаз", "Камаз+", 9.0, new DriverC("Трубович Станислав", true, 9));
         Track s140 = new Track("Volvo", "s140", 12.0, new DriverC("Максим Струценко", true, 10));
         Track valday = new Track("Газель", "Валдай", 5.0, new DriverC("Артем Боровских", true, 12));
-        Track j6 = new Track("Faw", "j6", 10.0, new DriverC("Дмитрий Епанчинцев", true, 7));
+        Track j6 = new Track("Faw", "j6", 10.0, new DriverC("Дмитрий Епанчинцев", false, 7));
         HashSet<Transport> transports = new HashSet<>();
         transports.add(granta);
         transports.add(a8);
@@ -42,11 +43,23 @@ public class Main {
         a8.setType(CarBodyType.COUPE);
         for (Transport transport : transports
         ) {
-            printInfo(transport);
-            transport.printType();
-        }
+            try {
+                transport.diagnostics();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            try {
+                if (!transport.getDriver().isDrivingLicense()) {
+                    throw new DrivingLicenseException("У Водителя нет прав", transport.getDriver());
+                }
+            } catch (DrivingLicenseException e) {
+                System.out.println(" Для участия в гонке необходимы права");
+                System.out.println(e.getDriver().getName() + " " + e.getMessage());
 
+            }
+        }
     }
+
 
     private static void printInfo(Transport transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и будет участвовать в заезде");

@@ -32,6 +32,8 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.driver = driver;
     }
 
+    public abstract void diagnostics() throws Exception;
+
     public abstract void startMoving();
 
     public abstract void stopMoving();

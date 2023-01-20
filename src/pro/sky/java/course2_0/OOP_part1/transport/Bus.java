@@ -9,7 +9,10 @@ public class Bus extends Transport<DriverD> {
     public Bus(String brand, String model, double engineVolume, DriverD driver) {
         super(brand, model, engineVolume, driver);
     }
-
+    @Override
+    public void diagnostics()throws Exception   {
+        throw new Exception("Объекты класса «Автобусы» диагностику проходить не могут");
+    }
     @Override
     public void startMoving() {
         System.out.println("Автобус " + this.getModel() + " начал движение");
