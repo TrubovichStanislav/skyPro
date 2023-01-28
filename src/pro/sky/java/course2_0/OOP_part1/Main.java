@@ -1,12 +1,14 @@
 package pro.sky.java.course2_0.OOP_part1;
 
 
+import pro.sky.java.course2_0.OOP_part1.Driver.Driver;
 import pro.sky.java.course2_0.OOP_part1.Driver.DriverB;
 import pro.sky.java.course2_0.OOP_part1.Driver.DriverC;
 import pro.sky.java.course2_0.OOP_part1.Driver.DriverD;
 import pro.sky.java.course2_0.OOP_part1.exception.DrivingLicenseException;
 import pro.sky.java.course2_0.OOP_part1.transport.*;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -63,7 +65,8 @@ public class Main {
 
 
         printInfoMechanic(granta);
-
+        Driver.printInfoAllDrives();
+      /*
         for (Transport transport : transports
         ) {
             try {
@@ -80,13 +83,14 @@ public class Main {
                 System.out.println(e.getDriver().getName() + " " + e.getMessage());
 
             }
-        }
+        }*/
     }
 
 
     private static void printInfo(Transport transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и будет участвовать в заезде");
     }
+
     private static void printInfoMechanic(Transport transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и его ослуживает команда механиков" + transport.getMechanics());
     }

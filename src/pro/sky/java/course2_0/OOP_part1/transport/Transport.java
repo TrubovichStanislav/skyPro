@@ -5,6 +5,7 @@ import pro.sky.java.course2_0.OOP_part1.Mechanic;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,6 +16,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     private double engineVolume;
     private final T driver;
     private final List<Mechanic> mechanics = new ArrayList<>();
+
 
 
     public Transport(String brand, String model, double engineVolume, T driver) {
