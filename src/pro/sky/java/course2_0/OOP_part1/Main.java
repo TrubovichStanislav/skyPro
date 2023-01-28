@@ -8,10 +8,8 @@ import pro.sky.java.course2_0.OOP_part1.Driver.DriverD;
 import pro.sky.java.course2_0.OOP_part1.exception.DrivingLicenseException;
 import pro.sky.java.course2_0.OOP_part1.transport.*;
 
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 
 
 public class Main {
@@ -32,20 +30,12 @@ public class Main {
         Mechanic mechanic1 = new Mechanic("Иванов Иван", "drive");
         Mechanic mechanic2 = new Mechanic("Сидоров Виктор", "drive1");
         Mechanic mechanic3 = new Mechanic("Петров Петр", "drive2");
-        granta.addMechanic(mechanic1);
-        granta.addMechanic(mechanic2);
-        granta.addMechanic(mechanic3);
-        a8.addMechanic(mechanic1);
-        z8.addMechanic(mechanic1);
-        avante.addMechanic(mechanic1);
-        a1.addMechanic(mechanic2);
-        pazik.addMechanic(mechanic2);
-        c3.addMechanic(mechanic2);
-        sprinter.addMechanic(mechanic2);
-        kamazPlas.addMechanic(mechanic3);
-        s140.addMechanic(mechanic3);
-        valday.addMechanic(mechanic3);
-        j6.addMechanic(mechanic3);
+        Transport.transportAddMechanic(granta, mechanic1);
+        Transport.transportAddMechanic(a8, mechanic2);
+        Transport.transportAddMechanic(z8, mechanic3);
+        Transport.transportAddMechanic(granta, mechanic2);
+        Transport.printTransportAndMechanic();
+
         ArrayList<Transport> transports = new ArrayList<>();
         transports.add(granta);
         transports.add(a8);
@@ -64,7 +54,6 @@ public class Main {
         a8.setType(CarBodyType.COUPE);
 
 
-        printInfoMechanic(granta);
         Driver.printInfoAllDrives();
       /*
         for (Transport transport : transports
@@ -86,12 +75,7 @@ public class Main {
         }*/
     }
 
-
     private static void printInfo(Transport transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и будет участвовать в заезде");
-    }
-
-    private static void printInfoMechanic(Transport transport) {
-        System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и его ослуживает команда механиков" + transport.getMechanics());
     }
 }
