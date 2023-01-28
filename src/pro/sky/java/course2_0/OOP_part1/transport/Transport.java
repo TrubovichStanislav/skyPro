@@ -1,8 +1,11 @@
 package pro.sky.java.course2_0.OOP_part1.transport;
 
 import pro.sky.java.course2_0.OOP_part1.Driver.Driver;
+import pro.sky.java.course2_0.OOP_part1.Mechanic;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Transport<T extends Driver> implements Competing {
@@ -11,6 +14,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     private final String model;
     private double engineVolume;
     private final T driver;
+    private final List<Mechanic> mechanics = new ArrayList<>();
 
 
     public Transport(String brand, String model, double engineVolume, T driver) {
@@ -38,6 +42,7 @@ public abstract class Transport<T extends Driver> implements Competing {
 
     public abstract void stopMoving();
 
+
     public String getBrand() {
         return brand;
     }
@@ -60,6 +65,14 @@ public abstract class Transport<T extends Driver> implements Competing {
 
     public T getDriver() {
         return driver;
+    }
+
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+    public void addMechanic(Mechanic mechanic) {
+        mechanics.add(mechanic);
     }
 
     public abstract void printType();
