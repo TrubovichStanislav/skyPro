@@ -12,9 +12,11 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 
 public class Main {
+  public static Set<Driver> drivers = new HashSet<>();
     public static void main(String[] args) {
 
         Car granta = new Car("Lada", "Granta", 2.5, new DriverB("Иван Иванов", true, 5));
@@ -27,7 +29,7 @@ public class Main {
         Bus sprinter = new Bus("Mercedes", "Sprinter", 7.0, new DriverD("Семен Семенов", true, 5));
         Track kamazPlas = new Track("Камаз", "Камаз+", 9.0, new DriverC("Трубович Станислав", true, 9));
         Track s140 = new Track("Volvo", "s140", 12.0, new DriverC("Максим Струценко", true, 10));
-        Track valday = new Track("Газель", "Валдай", 5.0, new DriverC("Артем Боровских", true, 12));
+        Track valday = new Track("Газель", "Валдай", 5.0, new DriverC("Дмитрий Епанчинцев", false, 7));
         Track j6 = new Track("Faw", "j6", 10.0, new DriverC("Дмитрий Епанчинцев", false, 7));
         Mechanic mechanic1 = new Mechanic("Иванов Иван", "drive");
         Mechanic mechanic2 = new Mechanic("Сидоров Виктор", "drive1");
@@ -47,6 +49,7 @@ public class Main {
         valday.addMechanic(mechanic3);
         j6.addMechanic(mechanic3);
         ArrayList<Transport> transports = new ArrayList<>();
+        printInfoAllDrives(drivers);
         transports.add(granta);
         transports.add(a8);
         transports.add(z8);
@@ -62,10 +65,8 @@ public class Main {
         j6.setType(TrackLoadCapacity.N1);
         pazik.setType(BusNumberSeats.EXTRA_LARGE);
         a8.setType(CarBodyType.COUPE);
-
-
         printInfoMechanic(granta);
-        Driver.printInfoAllDrives();
+
       /*
         for (Transport transport : transports
         ) {
@@ -86,7 +87,9 @@ public class Main {
         }*/
     }
 
-
+    private static void printInfoAllDrives(Set drivers) {
+        System.out.println("Список водителей" + drivers);
+    }
     private static void printInfo(Transport transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getModel() + " и будет участвовать в заезде");
     }
